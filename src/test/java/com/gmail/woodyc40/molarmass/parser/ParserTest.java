@@ -7,9 +7,11 @@ import cucumber.api.java.en.When;
 public class ParserTest {
     @When("^\"([^\"]*)\" is passed$")
     public void isPassed(String input) {
+        throw new PendingException();
     }
 
     @Then("^return \"([^\"]*)\"")
     public void thenReturn(String elements) {
+        throw new PendingException();
     }
 }

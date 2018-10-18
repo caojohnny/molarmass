@@ -7,9 +7,11 @@ import cucumber.api.java.en.When;
 public class MainTest {
     @When("^the user enters \"([^\"]*)\"$")
     public void theUserEnters(String input) throws Throwable {
+        throw new PendingException();
     }
 
     @Then("^\"([^\"]*)\" should be outputted$")
     public void shouldBeOutputted(String output) throws Throwable {
+        throw new PendingException();
     }
 }
