@@ -1,17 +1,41 @@
 package com.gmail.woodyc40.molarmass.data;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.en.Given;
+import com.gmail.woodyc40.molarmass.Main;
+import com.gmail.woodyc40.molarmass.config.Config;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
+import java.io.IOException;
+
+import static org.junit.Assert.*;
+
 public class PeriodicTableTest {
-    @Given("^The periodic table is sourced from \"([^\"]*)\"$")
-    public void sourcedFrom(String link) {
-        throw new PendingException();
+    private PeriodicTable data;
+
+    private boolean downloadSuccess;
+
+    @Before
+    public void before() throws IOException {
+        Config config = new Config(Main.DEFAULT_CFG_PATH);
+        this.data = new DefaultPeriodicTable(config.getDataSource());
     }
 
-    @Then("^The JSON data should be nonnull$")
+    @And("^the data has been downloaded$")
+    public void theDataHasBeenDownloaded() {
+        this.downloadSuccess = this.data.download();
+    }
+
+    @Then("^the JSON data should be nonnull$")
     public void then() {
-        throw new PendingException();
+        assertNotNull(this.data);
+        assertTrue(this.downloadSuccess);
+    }
+
+    @And("^the symbol of \"([^\"]*)\" should be \"([^\"]*)\"$")
+    public void shouldBe(String symbol, String name) {
+        Element element = this.data.getElement(symbol);
+        assertNotNull(element);
+        assertEquals(element.getName(), name);
     }
 }

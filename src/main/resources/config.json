@@ -1,7 +1,7 @@
 {
   "prompt": "> ",
-  "data-source": "https://github.com/Bowserinator/Periodic-Table-JSON/blob/master/PeriodicTableJSON.json",
+  "data-source": "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json",
 
-  "output-format": "Molar Mass: {0}",
-  "invalid-input-message": "Invalid Output"
+  "output-format": "Molar Mass: {0} g/mol",
+  "invalid-input-message": "Invalid Input"
 }

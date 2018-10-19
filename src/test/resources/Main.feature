@@ -1,7 +1,7 @@
 Feature:
-  Command-line interface that allows the user to enter chemical
-  formulas and receive output that describes information about
-  the given formula
+  Command-line interface that allows the user to enter
+  chemical formulas and receive output that describes
+  information about the given formula
 
   Scenario Outline: The user gives some input
     When the user enters "<symbol>"

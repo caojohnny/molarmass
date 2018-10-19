@@ -1,6 +1,6 @@
 Feature:
-  Parses a chemical formula or symbol into something that can
-  be used to calculate information
+  Parses a chemical formula or symbol into something that
+  can be used to calculate information
 
   Scenario Outline: an element is passed to the parser
     When "<element>" is passed

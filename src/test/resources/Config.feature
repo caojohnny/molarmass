@@ -1,8 +1,19 @@
 Feature:
-  The configuration file that is used to modify different ways in which the program
-  functions
+  The configuration file that is used to modify different
+  ways in which the program functions
+
+  Background:
+    Given the configuration is at "./config.json"
 
   Scenario: The config is loaded
-    When: The program initializes
-    Given: The config is at "./config.json"
-    Then: The configuration should be nonnull
+    Then the configuration should be nonnull
+
+  Scenario Outline: Config values are polled
+    Then "<key>" should be configured to <value>
+
+    Examples:
+      | key                   | value                                                                                              |
+      | prompt                | "> "                                                                                               |
+      | data-source           | "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json" |
+      | output-format         | "Molar Mass: {0} g/mol"                                                                                  |
+      | invalid-input-message | "Invalid Input"                                                                                    |
