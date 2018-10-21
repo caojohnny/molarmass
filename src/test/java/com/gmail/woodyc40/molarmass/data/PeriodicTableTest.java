@@ -2,6 +2,7 @@ package com.gmail.woodyc40.molarmass.data;
 
 import com.gmail.woodyc40.molarmass.Main;
 import com.gmail.woodyc40.molarmass.config.Config;
+import com.gmail.woodyc40.molarmass.config.DefaultConfig;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -17,7 +18,7 @@ public class PeriodicTableTest {
 
     @Before
     public void before() throws IOException {
-        Config config = new Config(Main.DEFAULT_CFG_PATH);
+        Config config = new DefaultConfig(Main.DEFAULT_CFG_PATH);
         this.data = new DefaultPeriodicTable(config.getDataSource());
     }
 

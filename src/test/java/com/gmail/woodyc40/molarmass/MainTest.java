@@ -1,10 +1,18 @@
 package com.gmail.woodyc40.molarmass;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class MainTest {
+    private Main main;
+
+    @Before
+    public void before() {
+        this.main = new Main();
+    }
+
     @When("^the user enters \"([^\"]*)\"$")
     public void theUserEnters(String input) throws Throwable {
         throw new PendingException();
