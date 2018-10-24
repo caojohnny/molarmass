@@ -8,17 +8,17 @@ import com.gmail.woodyc40.molarmass.tree.node.AbstractNode;
 import com.gmail.woodyc40.molarmass.tree.node.ElementNode;
 import com.gmail.woodyc40.molarmass.tree.node.SubscriptNode;
 
-public class ElementalState extends AbstractState {
+public class ElementState extends AbstractState {
     private String symbol = "";
     private String qty = "";
 
-    public ElementalState(char c) {
+    public ElementState(char c) {
         this.symbol += c;
     }
 
     @Override
     public AbstractState getNext(char c) {
-        AbstractState newState = expect(c, ElementalState.class, BeginGroupState.class, EndGroupState.class);
+        AbstractState newState = expect(c, ElementState.class, BeginGroupState.class, EndGroupState.class);
         if (newState != null) {
             return newState;
         } else if (isElementSymbol(c)) {
@@ -44,21 +44,24 @@ public class ElementalState extends AbstractState {
             throw new IllegalExpressionException("Empty symbol?");
         }
 
-        int qty = 1;
         if (!this.qty.isEmpty()) {
+            int qty;
             try {
                 qty = Integer.parseInt(this.qty);
             } catch (NumberFormatException e) {
                 throw new IllegalExpressionException("Cannot parse " + this.qty + " as a quantity");
             }
+
+            AbstractNode subscript = new SubscriptNode(qty);
+            tree.addChildToBranch(subscript);
+            tree.newBranch();
+
+            AbstractNode elementNode = new ElementNode(element);
+            tree.addChildToBranch(elementNode);
+            tree.endBranch();
+        } else {
+            AbstractNode elementNode = new ElementNode(element);
+            tree.addChildToBranch(elementNode);
         }
-
-        AbstractNode subscript = new SubscriptNode(qty);
-        tree.addChildToPrev(subscript);
-        tree.newBranch();
-
-        AbstractNode elementNode = new ElementNode(element);
-        tree.addChildToPrev(elementNode);
-        tree.endBranch();
     }
 }

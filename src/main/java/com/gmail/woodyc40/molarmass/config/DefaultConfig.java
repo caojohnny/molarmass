@@ -45,6 +45,11 @@ public class DefaultConfig implements Config {
         return this.data.get("invalid-input-message").getAsString();
     }
 
+    @Override
+    public boolean getIsDebugging() {
+        return this.data.get("debug").getAsBoolean();
+    }
+
     public JsonObject getData() {
         return this.data;
     }

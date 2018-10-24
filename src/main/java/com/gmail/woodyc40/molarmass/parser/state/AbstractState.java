@@ -10,8 +10,8 @@ public abstract class AbstractState {
 
     public static AbstractState expect(char c, Class<? extends AbstractState>... classes) {
         for (Class<? extends AbstractState> cls : classes) {
-            if (cls == ElementalState.class && isElementStart(c)) {
-                return new ElementalState(c);
+            if (cls == ElementState.class && isElementStart(c)) {
+                return new ElementState(c);
             }
 
             if (cls == BeginGroupState.class && isGroupStart(c)) {

@@ -8,4 +8,6 @@ public interface Config {
     String getOutputFormat();
 
     String getInvalidInputMessage();
+
+    boolean getIsDebugging();
 }

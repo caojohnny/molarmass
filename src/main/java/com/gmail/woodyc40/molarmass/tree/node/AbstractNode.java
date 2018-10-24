@@ -26,4 +26,8 @@ public abstract class AbstractNode implements Node {
     public void addChild(Node child) {
         this.children.add(child);
     }
+
+    public void removeChild(Node child) {
+        this.children.remove(child);
+    }
 }

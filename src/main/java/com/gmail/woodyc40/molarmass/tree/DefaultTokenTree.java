@@ -10,25 +10,44 @@ import java.util.function.Consumer;
 public class DefaultTokenTree implements TokenTree {
     private final RootNode root = new RootNode();
 
-    private AbstractNode prev = this.root;
+    private AbstractNode branchRoot = this.root;
     private AbstractNode lastInsertion = this.root;
 
-    public void addChildToPrev(AbstractNode node) {
-        node.setParent(this.prev);
-        this.prev.addChild(node);
+    public void addChildToBranch(AbstractNode node) {
+        node.setParent(this.branchRoot);
+        this.branchRoot.addChild(node);
         this.lastInsertion = node;
     }
 
+    public AbstractNode replaceBranchRoot(AbstractNode node) {
+        AbstractNode old = this.branchRoot;
+
+        AbstractNode oldParent = old.getParent();
+        oldParent.removeChild(old);
+        oldParent.addChild(node);
+
+        node.getChildren().addAll(old.getChildren());
+        old.getChildren().clear();
+
+        this.branchRoot = node;
+
+        return old;
+    }
+
     public void newBranch() {
-        this.prev = this.lastInsertion;
+        this.branchRoot = this.lastInsertion;
     }
 
     public void endBranch() {
-        if (this.prev == this.root) {
+        if (this.branchRoot == this.root) {
             throw new IllegalExpressionException("Cannot end branch here");
         }
 
-        this.prev = this.prev.getParent();
+        this.branchRoot = this.branchRoot.getParent();
+    }
+
+    public AbstractNode getBranchRoot() {
+        return this.branchRoot;
     }
 
     public AbstractNode getLastInsertion() {

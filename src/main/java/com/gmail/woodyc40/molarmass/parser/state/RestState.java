@@ -16,11 +16,12 @@ public final class RestState extends AbstractState {
 
     @Override
     public AbstractState getNext(char c) {
-        if (isElementStart(c)) {
-            return new ElementalState(c);
-        } else {
-            throw new IllegalExpressionException("Did not expect " + c);
+        AbstractState expect = expect(c, ElementState.class);
+        if (expect != null) {
+            return expect;
         }
+
+        throw new IllegalExpressionException("Did not expect " + c);
     }
 
     @Override

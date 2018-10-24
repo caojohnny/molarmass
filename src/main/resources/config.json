@@ -3,5 +3,7 @@
   "data-source": "https://raw.githubusercontent.com/Bowserinator/Periodic-Table-JSON/master/PeriodicTableJSON.json",
 
   "output-format": "Molar Mass: {0} g/mol",
-  "invalid-input-message": "Invalid Input"
+  "invalid-input-message": "Invalid Input",
+
+  "debug": true
 }
