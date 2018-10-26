@@ -17,6 +17,6 @@ Feature:
 
     Examples:
       | formula | elements      |
-      | H2O     | H = 2, O = 1  |
-      | HCl     | H = 1, Cl = 1 |
+      | H2O     | O = 1, H = 2  |
+      | HCl     | Cl = 1, H = 1 |
       | O2      | O = 2         |

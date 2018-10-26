@@ -23,7 +23,8 @@ public abstract class AbstractNode implements Node {
         this.parent = parent;
     }
 
-    public void addChild(Node child) {
+    public void addChild(AbstractNode child) {
+        child.setParent(this);
         this.children.add(child);
     }
 

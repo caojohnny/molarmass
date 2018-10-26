@@ -20,7 +20,7 @@ public class ElementNode extends AbstractNode {
     }
 
     @Override
-    public void addChild(Node child) {
+    public void addChild(AbstractNode child) {
         throw new UnsupportedOperationException("Elements cannot have children");
     }
 }

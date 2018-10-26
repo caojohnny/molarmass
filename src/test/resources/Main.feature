@@ -5,12 +5,11 @@ Feature:
 
   Scenario Outline: The user gives some input
     When the user enters "<symbol>"
-    Then "<info>" should be outputted
+    Then the molar mass should be <mass>
 
     Examples:
-      | symbol | info                |
-      | H      | Molar Mass = 1.0008 |
-      | He     | Molar Mass = 4      |
-      | H2O    | Molar Mass = 18     |
-      | NO3    | Molar Mass = 62     |
-      | AZ     | Invalid input       |
+      | symbol | mass      |
+      | H      | 1.008     |
+      | He     | 4.0026022 |
+      | H2O    | 18.015    |
+      | NO3    | 62.004    |

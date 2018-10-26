@@ -26,6 +26,7 @@ public class ParserTest {
     public void before() throws IOException {
         Config config = new DefaultConfig(Main.DEFAULT_CFG_PATH);
         this.data = new DefaultPeriodicTable(config.getDataSource());
+        this.data.download();
     }
 
     @When("^\"([^\"]*)\" is passed$")

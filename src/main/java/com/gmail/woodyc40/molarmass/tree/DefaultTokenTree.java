@@ -26,8 +26,10 @@ public class DefaultTokenTree implements TokenTree {
         oldParent.removeChild(old);
         oldParent.addChild(node);
 
-        node.getChildren().addAll(old.getChildren());
-        old.getChildren().clear();
+        for (Node child : old.getChildren()) {
+            node.addChild((AbstractNode) child);
+            old.removeChild(child);
+        }
 
         this.branchRoot = node;
 

@@ -16,7 +16,7 @@ public final class RestState extends AbstractState {
 
     @Override
     public AbstractState getNext(char c) {
-        AbstractState expect = expect(c, ElementState.class);
+        AbstractState expect = expect(c, ElementState.class, BeginGroupState.class);
         if (expect != null) {
             return expect;
         }
@@ -26,6 +26,5 @@ public final class RestState extends AbstractState {
 
     @Override
     public void process(DefaultTokenTree tree, Parser parser) {
-        throw new UnsupportedOperationException("Did not reach the first token");
     }
 }

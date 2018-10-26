@@ -1,12 +1,13 @@
 package com.gmail.woodyc40.molarmass.parser.state;
 
+import com.gmail.woodyc40.molarmass.exception.IllegalExpressionException;
 import com.gmail.woodyc40.molarmass.parser.Parser;
 import com.gmail.woodyc40.molarmass.tree.DefaultTokenTree;
 
 public abstract class AbstractState {
     public abstract AbstractState getNext(char c);
 
-    public abstract void process(DefaultTokenTree tree, Parser parser);
+    public abstract void process(DefaultTokenTree tree, Parser parser) throws IllegalExpressionException;
 
     public static AbstractState expect(char c, Class<? extends AbstractState>... classes) {
         for (Class<? extends AbstractState> cls : classes) {
