@@ -44,6 +44,8 @@ mvn test install
 
 Executable jar will be located in `./target`
 
+You may also download the jar from [here](https://github.com/AgentTroll/molarmass/releases/tag/1.0-SNAPSHOT).
+
 ## Use
 
 Simple CLI interface. Begin the program, type in chemical formula. The
