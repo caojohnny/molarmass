@@ -12,8 +12,10 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -42,8 +44,13 @@ public class ParserTest {
         TokenTreeParser ttp = new TokenTreeParser(this.tree);
         Map<Element, Integer> map = ttp.getElementMap();
 
-        StringBuilder output = new StringBuilder();
+        Map<Element, Integer> sortedMap = new TreeMap<>(Comparator.comparing(Element::getSymbol));
         for (Entry<Element, Integer> entry : map.entrySet()) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (Entry<Element, Integer> entry : sortedMap.entrySet()) {
             output.append(entry.getKey().getSymbol()).append(" = ").append(entry.getValue()).append(", ");
         }
         output.delete(output.length() - 2, output.length());

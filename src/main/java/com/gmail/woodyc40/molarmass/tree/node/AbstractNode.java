@@ -31,4 +31,8 @@ public abstract class AbstractNode implements Node {
     public void removeChild(Node child) {
         this.children.remove(child);
     }
+
+    public void clearChildren() {
+        this.children.clear();
+    }
 }

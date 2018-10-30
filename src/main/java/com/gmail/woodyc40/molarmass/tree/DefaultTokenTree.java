@@ -22,14 +22,14 @@ public class DefaultTokenTree implements TokenTree {
     public AbstractNode replaceBranchRoot(AbstractNode node) {
         AbstractNode old = this.branchRoot;
 
-        AbstractNode oldParent = old.getParent();
-        oldParent.removeChild(old);
-        oldParent.addChild(node);
-
         for (Node child : old.getChildren()) {
             node.addChild((AbstractNode) child);
-            old.removeChild(child);
         }
+        old.clearChildren();
+
+        AbstractNode parent = old.getParent();
+        parent.removeChild(old);
+        parent.addChild(node);
 
         this.branchRoot = node;
 
