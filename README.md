@@ -3,7 +3,7 @@
 I got bored in chem.
 
 I honestly could have made something like my 
-[`saved-posts`](https://github.com/AgentTroll/saved-posts)
+[`saved-posts`](https://github.com/caojohnny/saved-posts)
 project where everything was practically in a single class,
 but I decided not to.
 
@@ -37,14 +37,14 @@ method to parse the previous branch's count into the current node's count.
 ## Building
 
 ``` shell
-git clone https://github.com/AgentTroll/molarmass.git
+git clone https://github.com/caojohnny/molarmass.git
 cd molarmass
 mvn test install
 ```
 
 Executable jar will be located in `./target`
 
-You may also download the jar from [here](https://github.com/AgentTroll/molarmass/releases/tag/1.0-SNAPSHOT).
+You may also download the jar from [here](https://github.com/caojohnny/molarmass/releases/tag/1.0-SNAPSHOT).
 
 ## Use
 
